@@ -4,3 +4,11 @@
     box-sizing: border-box;
 }
 
+.contenedor-image{
+    width: 50%;
+}
+
+.collage-image{
+    width: 100%;
+    margin: auto;
+}
