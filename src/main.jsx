@@ -3,12 +3,12 @@ import ReactDOM from 'react-dom/client'
 import { Routes, Route, BrowserRouter } from 'react-router-dom'
 import App from './App'
 import './index.css'
-import HomePage from "./pages/HomePage/HomePage";
-import IniciarSesion from "./pages/IniciarSesion/IniciarSesion";
-import Registro from "./pages/Registro/Registro";
-import Estrenos from "./pages/Estrenos/Estrenos";
-import DetallePelicula from "./pages/DetallePelicula/DetallePelicula";
-import PageNotFound from "./pages/PageNotFound/NotFound";
+import HomePage from "./pages/homePage/HomePage";
+import IniciarSesion from "./pages/iniciarSesion/IniciarSesion";
+import Registro from "./pages/registro/Registro";
+import Estrenos from "./pages/estrenos/Estrenos";
+import DetallePelicula from "./pages/detallePelicula/DetallePelicula";
+import PageNotFound from "./pages/pageNotFound/NotFound";
 
 
 ReactDOM.createRoot(document.getElementById('root')).render(
