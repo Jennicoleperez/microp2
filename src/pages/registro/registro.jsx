@@ -1,16 +1,22 @@
 import React from 'react'
-import collage from "../../image/collage.jpg"
+import collage1 from "../../image/collage1.jpg"
+import Style from "../registro/registro.module.css"
 
 function Registro() {
   return (
     <div>
     
-    <h1>Registro de usuario</h1>
-    <section>
-      <div className="back_image">
-        <img src={collage} alt="Collage de películas" />
+      <div className={Style.fondito1}>
+        <img src={collage1} alt="Collage de películas" />
       </div>
-    </section>
+      
+
+      <h1 className={Style.titulo}>Registro de usuario</h1>
+
+      <div className={Style.formulario}>
+
+      </div>
+
     
    
     
