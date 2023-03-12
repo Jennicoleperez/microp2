@@ -21,30 +21,26 @@ function Registro() {
         Iniciar Sesión
       </button>
       
-        <form className={Style.formulario}>
-         <h2 className={Style.titulo}>CARTELERA CARACAS</h2>
-          <h2 className={Style.titulo2}>Crea tu cuenta aquí:</h2>
-          <div className={Style.subt1}>
-            <label>Nombre:</label>
-            <input type="text" id="firstName" placeholder=' Ej: Pedro'/>
-          </div>
-          <div  className={Style.subt2}>
-            <label>Apellido:</label>
-            <input type="text" id="lastName" placeholder=' Ej: Carreño'/>
-          </div>
-          <div  className={Style.subt3}>
-            <label>Email:</label>
-            <input type="email" id="email" placeholder=' Ej: p.carreno@gmail.com'/>
-          </div>
+      <div>
+        <form className={Style.form}>
 
-          <button className={Style.aceptar}>
-            Registrarme
-          </button>
-          <button className={Style.google}>
-            Registrarme con Google
-          </button>
+          <label >Nombre</label>
+          <input type="text" id="fname" name="nombre" placeholder="Maria"/>
+
+          <label >Apellido</label>
+          <input type="text" id="lname" name="apellido" placeholder="Pérez"/>
+
+          <label >Email</label>
+          <input type="text" id="email" name="email" placeholder="Ej: mariaperez@gmail.com"/>
+
+          <label>Contraseña</label>
+          <input type="text" id="contrasena" name="contrasena" placeholder="*******"/>
+        
+          <input type="submit" value="Registrarse"/>
+          <input type="submit" value="Registrarse con Google"/>
 
         </form>
+      </div>
       
       
 
