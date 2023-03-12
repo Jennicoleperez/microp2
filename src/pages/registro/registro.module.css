@@ -51,17 +51,28 @@
    position: absolute;
    border: 2px solid black;
    border-radius: 13px;
+}
 
+.formulario input{
+    width: 50%;
 }
 
 .titulo{
     color: white;
-    font-size: 300%;
+    font-size: 250%;
     top: 10%;
-    
+    color: #EF3629;
     position: relative;
     text-align: center;
-  
+}
+
+.titulo2{
+    color: white;
+    font-size: 190%;
+    top: 15%;
+    color: white;
+    position: relative;
+    left: 10%;
 }
 
 .subt1{
@@ -88,8 +99,42 @@
     display: flex;
 }
 
+.aceptar{
+    background-color: #EF3629;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin-left: 38%;
+    margin-top: 10%;
+    cursor: pointer;
+    -webkit-transition-duration: 0.4s;
+    transition-duration: 0.4s;
+    position: absolute;
+    border-radius: 8px;
+}
 
 
+.google{
+    background-color: #EF3629;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin-left: 30%;
+    margin-top: 23%;
+    cursor: pointer;
+    -webkit-transition-duration: 0.4s;
+    transition-duration: 0.4s;
+    position: absolute;
+    border-radius: 8px;
+}
 
 
   
