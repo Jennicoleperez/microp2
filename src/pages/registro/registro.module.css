@@ -18,6 +18,14 @@
     top: -9%;
 }
 
+.cartelera{
+    position:absolute;
+    width: 20%;
+    left: 33%;
+    top:-5%
+}
+
+
 .ingresar {
     background-color: #EF3629;
     border: none;
@@ -26,7 +34,7 @@
     text-align: center;
     text-decoration: none;
     display: inline-block;
-    font-size: 16px;
+    font-size: 80%;
     margin-left: 85%;
     margin-top: 2%;
     cursor: pointer;
@@ -68,13 +76,21 @@ input[type=submit] {
     background-color: black;
     padding: 20px;
     width: 30%;
-    margin-top: 11%;
+    margin-top: 16%;
     margin-left: 32%;
-    opacity: 0.85;
+    opacity: 0.88;
     border: 2px solid black;
     border-radius: 13px;
     color:white;
     position: absolute;
+  }
+
+  .form h1{
+    text-align: center;
+  }
+
+  .form h3{
+    text-align: center;
   }
   
   
