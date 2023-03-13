@@ -7,34 +7,45 @@ import { Link } from 'react-router-dom'
 import { HOMEPAGE_URL, INICIARSESION_URL} from '../../constants/urls'
 import { registerWithEmailAndPassword, signInWithGoogle } from '../../firebase/auth-service'
 import { useState } from 'react'
+import { useNavigate } from 'react-router-dom';
 
-const LOGIN_URL="";
 
 function Registro() {
 
-  const [] = useState({
-    name: "",
-    lname: "",
-    email: "",
-    contrasena:""
-  });
+  const navigate = useNavigate();
+  const [formData, setData] = useState({});
+
+  const onSuccess = () => {
+    navigate(HOMEPAGE_URL);
+  };
+
+  const onFail = (_error) => {
+    console.log("REGISTER FAILED, Try Again");
+  };
 
   const handleSignWithGoogle= async () => {
-    await signInWithGoogle();
+    await signInWithGoogle({
+      onSuccess: () => navigate(HOMEPAGE_URL),
+    });
   } 
 
   const handleOnChange = (event)  => {
-    const{name, value} = event.target;
-    setFormData({
-      ...formData,
-      [name]:value,
-    })
+    setData((oldData) => ({
+      ...oldData,
+      [event.target.name]: event.target.value,
+    }));
   };
 
-  const onSubmit = async (event) => {
+
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    await registerWithEmailAndPassword(formData.email, formData.contrasena);
-  }
+
+    await registerWithEmailAndPassword({
+      userData: formData,
+      onSuccess,
+      onFail,
+    });
+  };
 
   return (
     <div>
@@ -57,7 +68,7 @@ function Registro() {
       </Link>
       
       <div>
-        <form className={Style.form} onSubmit={onSubmit}>
+        <form className={Style.form}>
         <h1>¡Bienvenido!</h1>
         <br />
         <h2>Regístrate para continuar</h2>
@@ -75,9 +86,8 @@ function Registro() {
           <label >Contraseña</label>
           <input type="text" id="contrasena" name="contrasena" placeholder="*******" onChange={handleOnChange}/>
           
-          <Link to={HOMEPAGE_URL} >
-            <button type="submit">Entrar</button>
-          </Link>
+          <button type="submit" onClick={handleSubmit}>Entrar</button>
+
 
           <button type="submit" onClick={handleSignWithGoogle}>Registrarse con Google</button>
           

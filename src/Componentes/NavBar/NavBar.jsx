@@ -1,13 +1,13 @@
 import React from 'react'
 import { Link, useNavigate } from 'react-router-dom';
-import { REGISTRO_URL } from '../../constants/urls';
-import { useUser } from '../../context/UserContext'
 import styles from '../NavBar/NavBar.module.css'
 import { logout } from '../../firebase/auth-service';
 import { HOMEPAGE_URL,REGISTRO_URL, INICIARSESION_URL } from '../../constants/urls';
+import { useUserContext } from '../../context/UserContext';
 
 function NavBar() {
-    const {user} = useUser(); 
+    const navigate = useNavigate();
+    const {user, isLoadingUser} = useUserContext(); 
     console.log({user}); 
 
     const handleLogout = async () => {
@@ -16,25 +16,23 @@ function NavBar() {
     }
 
   return (
-    <>
+
+
     <nav className={styles.navbar}>
-         
+      <ul className={styles.menuList}>
+        <li className={`${styles.menuItem} ${styles.menuItemLeft}`}>
+          <Link to={HOMEPAGE_URL} className={styles.link}>
+            <span>Home</span>
+          </Link>
+        </li>
+      </ul>
+
       {!isLoadingUser && (
         <ul className={styles.menuList}>
           {!!user ? (
             <>
-            <ul className={styles.menuList}>
-            <li className={`${styles.menuItem} ${styles.menuItemLeft}`}>
-            <Link to={HOMEPAGE_URL} className={styles.link}>
-                <span>HomePage</span>
-            </Link>
-            </li>
-            </ul> 
               <li className={`${styles.menuItem} ${styles.menuItemRight}`}>
-                <Link to={PROFILE_URL} className={styles.link}>
-                  <div className={styles.userAvatar} />
-                  <span>Bienvenid@, {user.name}</span>
-                </Link>
+                  <span>{user.name}</span>
               </li>
               <li className={`${styles.menuItem} ${styles.menuItemRight}`}>
                 <button
@@ -64,9 +62,9 @@ function NavBar() {
       )}
     </nav>
 
+         
+      
 
-
-    </>
   )
 }
 

@@ -7,11 +7,11 @@ export function Layout() {
     <UserContextProvider>
       <main>
         
-        <NavBar></NavBar>
+        <NavBar/>
         <section className="body">
-            <Outlet></Outlet>
+            <Outlet/>
         </section>
-    </main>
+      </main>
     </UserContextProvider>
   );
 }
