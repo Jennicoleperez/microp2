@@ -1,0 +1,39 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.banner{
+    background: url("../../assets/banner.jpg")center/cover;
+    height: 600px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    object-fit: cover;
+}
+
+.banner::before{
+    content: "";
+    height: 100%;
+    width: 100%;
+    background: rgb(28, 27, 27);
+    opacity: 0.8;
+}
+
+.banner_info{
+    padding: 0.3rem;
+    position: absolute;
+    width: 100%;
+    max-width: 600px;
+    text-align: center;
+    color: white;
+    margin: auto;
+}
+
+.banner_title{
+    line-height: 1.5;
+    font-size: 2em;
+    color: white;
+}

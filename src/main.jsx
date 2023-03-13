@@ -9,6 +9,7 @@ import Registro from "./pages/registro/Registro";
 import Estrenos from "./pages/estrenos/Estrenos";
 import DetallePelicula from "./pages/detallePelicula/DetallePelicula";
 import PageNotFound from "./pages/pageNotFound/NotFound";
+import Buscador from './pages/buscadorPage/buscador'
 
 
 ReactDOM.createRoot(document.getElementById('root')).render(
@@ -20,7 +21,8 @@ ReactDOM.createRoot(document.getElementById('root')).render(
         <Route path="/" element={<Registro/>}/> 
         <Route path="/estrenos" element={<Estrenos/>}/>  
         <Route path="/detallePelicula" element={<DetallePelicula/>}/>
-        <Route path="/pageNotFound" element={<PageNotFound/>}/>  
+        <Route path="/pageNotFound" element={<PageNotFound/>}/>
+        <Route path="/buscar" element={<Buscador/>}/>
       </Routes>  
     </BrowserRouter> 
   </React.StrictMode>   
