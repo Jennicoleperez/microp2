@@ -3,11 +3,45 @@ import collage1 from "../../image/collage1.jpg"
 import Style from "../registro/registro.module.css"
 import logo from '../../image/logo.svg'
 import cartelera from '../../image/carteleracaracas.svg'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
+import {registerWithEmailAndPassword } from '../../firebase/auth-service'
+
 
 const LOGIN_URL="";
 
 function Registro() {
+
+  const navigate = useNavigate();
+    
+    const [formData, setFormData] = useState({
+      name: '',
+      email: '',
+      password: '',
+      rol:'paciente'
+    });
+    
+    const handleOnChange = (event) => {
+      const {name, value} = event.target;
+      setFormData({
+        ...formData,
+        [name]: value,
+      })
+    }
+
+    const onSubmit = async (event) => {
+      event.preventDefault();
+      const {email, password, ...extraData} =formData;
+      await registerWithEmailAndPassword(formData.email, formData.password, extraData);
+      navigate(HOME_URL);
+    };
+
+    const handleSignWithGoogle = async () => {
+      console.log('registro con google')   
+      await signInWithGooglePatient();  
+      navigate(HOME_URL);
+    };
+
+
   return (
     <div>
     
