@@ -3,47 +3,42 @@ import collage1 from "../../image/collage1.jpg"
 import Style from "../registro/registro.module.css"
 import logo from '../../image/logo.svg'
 import cartelera from '../../image/carteleracaracas.svg'
-import { Link, useNavigate } from 'react-router-dom'
-import {registerWithEmailAndPassword } from '../../firebase/auth-service'
-
+import { Link } from 'react-router-dom'
+import { HOMEPAGE_URL, INICIARSESION_URL} from '../../constants/urls'
+import { registerWithEmailAndPassword, signInWithGoogle } from '../../firebase/auth-service'
+import { useState } from 'react'
 
 const LOGIN_URL="";
 
 function Registro() {
 
-  const navigate = useNavigate();
-    
-    const [formData, setFormData] = useState({
-      name: '',
-      email: '',
-      password: '',
-      rol:'paciente'
-    });
-    
-    const handleOnChange = (event) => {
-      const {name, value} = event.target;
-      setFormData({
-        ...formData,
-        [name]: value,
-      })
-    }
+  const [] = useState({
+    name: "",
+    lname: "",
+    email: "",
+    contrasena:""
+  });
 
-    const onSubmit = async (event) => {
-      event.preventDefault();
-      const {email, password, ...extraData} =formData;
-      await registerWithEmailAndPassword(formData.email, formData.password, extraData);
-      navigate(HOME_URL);
-    };
+  const handleSignWithGoogle= async () => {
+    await signInWithGoogle();
+  } 
 
-    const handleSignWithGoogle = async () => {
-      console.log('registro con google')   
-      await signInWithGooglePatient();  
-      navigate(HOME_URL);
-    };
+  const handleOnChange = (event)  => {
+    const{name, value} = event.target;
+    setFormData({
+      ...formData,
+      [name]:value,
+    })
+  };
 
+  const onSubmit = async (event) => {
+    event.preventDefault();
+    await registerWithEmailAndPassword(formData.email, formData.contrasena);
+  }
 
   return (
     <div>
+
     
       <div className={Style.fondito1}>
         <img src={collage1} alt="Collage de películas" />
@@ -55,41 +50,41 @@ function Registro() {
         <img src={logo} alt="Collage de películas" />
       </div>
       
-      <Link to="/iniciarSesion" >
+      <Link to={INICIARSESION_URL} >
         <button className={Style.ingresar}>
           Iniciar Sesión
         </button>
       </Link>
       
       <div>
-        <form className={Style.form}>
+        <form className={Style.form} onSubmit={onSubmit}>
         <h1>¡Bienvenido!</h1>
         <br />
         <h2>Regístrate para continuar</h2>
         <br />
 
-          <label >Nombre</label>
-          <input type="text" id="fname" name="nombre" placeholder="Ej: Maria"/>
+          <label  >Nombre</label>
+          <input type="text" id="fname" name="name" placeholder="Ej: Maria" onChange={handleOnChange}/>
 
           <label >Apellido</label>
-          <input type="text" id="lname" name="apellido" placeholder="Ej: Pérez"/>
+          <input type="text" id="lname" name="lname" placeholder="Ej: Pérez" onChange={handleOnChange}/>
 
           <label >Email</label>
-          <input type="text" id="email" name="email" placeholder="Ej: mariaperez@gmail.com"/>
+          <input type="text" id="email" name="email" placeholder="Ej: mariaperez@gmail.com"  onChange={handleOnChange}/>
 
-          <label>Contraseña</label>
-          <input type="text" id="contrasena" name="contrasena" placeholder="*******"/>
+          <label >Contraseña</label>
+          <input type="text" id="contrasena" name="contrasena" placeholder="*******" onChange={handleOnChange}/>
           
-          <Link to="/homePage" >
-            <input type="submit" value="Entrar"/>
+          <Link to={HOMEPAGE_URL} >
+            <button type="submit">Entrar</button>
           </Link>
 
-          <Link to="/homePage" >
-            <input type="submit" value="Registrarse con Google"/>
-          </Link>
+          <button type="submit" onClick={handleSignWithGoogle}>Registrarse con Google</button>
+          
+          
           <br />
           <br />
-          <h3>¿Tienes una cuenta? <Link to='/iniciarSesion'>Inicia Sesión.</Link></h3>
+          <h3>¿Tienes una cuenta? <Link to={INICIARSESION_URL}>Inicia Sesión.</Link></h3>
 
         </form>
       </div>
