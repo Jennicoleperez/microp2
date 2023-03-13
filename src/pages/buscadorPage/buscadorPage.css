@@ -1,0 +1,17 @@
+.text-center h4{
+    background-color: white;
+}
+
+.card-body{
+    background-color: white;
+}
+
+img{
+    cursor: pointer;
+    transition: all 0.3s;
+
+}
+
+img:hover{
+    transform: scale(1.1);
+}
